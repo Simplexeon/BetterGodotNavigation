@@ -5,8 +5,12 @@ extends CharacterBody2D
 @export var speed : float;
 
 # Navigation parameters
-@export var target_leniency : float;
-@export var path_point_leniency : float;
+## The allowed distance between the final destination and the intended destination.
+@export var target_tolerance : float;
+## The distance that the target point can move before recalulating the whole path.
+@export var recalculation_tolerance : float;
+## The distance that the unit can be away each point on the path.
+@export var path_point_tolerance : float;
 
 # Debug line
 @export var line : Line2D;
@@ -27,8 +31,8 @@ func _physics_process(delta: float) -> void:
 	# Change path if the position is very different
 	var current_target_position : Vector2 = target.global_position;
 	
-	# Check if target is within leniency
-	if((target_position - current_target_position).length() > target_leniency):
+	# Check if target is within tolerance
+	if((target_position - current_target_position).length() > recalculation_tolerance):
 		target_position = current_target_position;
 		current_path = create_path_to(target_position);
 	
@@ -44,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	global_position += speed * move_dir * delta;
 	
 	# Check if close to path point position
-	if(relative_target_point_pos.length() < path_point_leniency):
+	if(relative_target_point_pos.length() < path_point_tolerance):
 		current_path_point += 1;
 	
 	# Reset movement direction

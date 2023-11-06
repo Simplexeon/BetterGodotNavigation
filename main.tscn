@@ -24,8 +24,9 @@ position = Vector2(354, 244)
 script = ExtResource("2_x4ka4")
 target = NodePath("../TargetPoint")
 speed = 100.0
-target_leniency = 64.0
-path_point_leniency = 5.0
+target_tolerance = 5.0
+recalculation_tolerance = 150.0
+path_point_tolerance = 5.0
 line = NodePath("../Line2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathfindingEnemy"]
@@ -37,7 +38,7 @@ scale = Vector2(32, 32)
 texture = SubResource("PlaceholderTexture2D_ak7aj")
 
 [node name="Line2D" type="Line2D" parent="."]
-width = 5.0
+width = 2.0
 default_color = Color(0, 1, 0, 1)
 joint_mode = 2
 antialiased = true
