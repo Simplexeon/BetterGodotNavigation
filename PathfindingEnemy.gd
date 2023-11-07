@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var recalculation_tolerance : float;
 ## The distance that the unit can be away each point on the path.
 @export var path_point_tolerance : float;
+## The radius to avoid walls.
+@export var wall_radius : float;
 
 # Debug line
 @export var line : Line2D;
@@ -21,7 +23,6 @@ var move_dir : Vector2 = Vector2.ZERO;
 # Pathfinding variables
 var target_position : Vector2;
 var current_path_point : int = 0;
-var at_target : bool = false;
 var current_path : Array[Vector2] = []; # Vector2 Array of the current path to follow
 
 
@@ -91,8 +92,25 @@ func get_next_point(from : Vector2, to : Vector2) -> Vector2:
 	var next_test_line : Vector2 = result - from;
 	
 	# When this finishes, result will be the next point in the path
-	while(test_move(transform, next_test_line)):
-		pass
+	var collision_info : KinematicCollision2D;
+	while(test_move(transform, next_test_line, collision_info)):
+		
+		# Get the shape of the collided object
+		var collision_rect : Rect2 = collision_info.get_collider_shape().get_rect();
+		var c_shape_pos : Vector2 = to_global(collision_rect.position);
+		var c_shape_end : Vector2 = to_global(collision_rect.end);
+		var c_shape_side_dir : Vector2 = collision_info.get_normal().rotated(PI/2);
+		var collision_pos : Vector2 = collision_info.get_position();
+		
+		# Get the collision position relative to the rectangle length
+		var collision_percent : float = c_shape_pos.distance_to(collision_pos) / c_shape_pos.distance_to(c_shape_end);
+		
+		# Set the new direction
+		if(collision_percent < 0.5):
+			c_shape_side_dir = c_shape_side_dir * -1;
+		
+		# Get the next point
+		#next_test_line = 
 	
 	# Return the result
 	return result;

@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		move_dir.x += 1;
 	
 	# Move the target
-	global_position += move_dir * speed * delta;
+	global_position += move_dir.normalized() * speed * delta;
 	
 	# Reset the movement direction
 	move_dir *= 0;
