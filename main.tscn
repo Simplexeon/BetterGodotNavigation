@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://csgqtxpbyibt4"]
+[gd_scene load_steps=5 format=3 uid="uid://csgqtxpbyibt4"]
 
-[ext_resource type="Script" path="res://TargetPoint.gd" id="1_3v51s"]
+[ext_resource type="PackedScene" uid="uid://cxsl22chg0hgm" path="res://TestPoint/target_point.tscn" id="1_7an62"]
 [ext_resource type="Script" path="res://PathfindingEnemy.gd" id="2_x4ka4"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bokux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a286v"]
 size = Vector2(32, 32)
@@ -12,17 +10,12 @@ size = Vector2(32, 32)
 
 [node name="Main" type="Node2D"]
 
-[node name="TargetPoint" type="Sprite2D" parent="."]
-position = Vector2(285, 187)
-scale = Vector2(21.9, 21.9)
-texture = SubResource("PlaceholderTexture2D_bokux")
-script = ExtResource("1_3v51s")
-speed = 400.0
+[node name="TargetPoint" parent="." instance=ExtResource("1_7an62")]
+speed = 0.0
 
-[node name="PathfindingEnemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("target", "line")]
+[node name="PathfindingEnemy" type="CharacterBody2D" parent="." node_paths=PackedStringArray("line")]
 position = Vector2(354, 244)
 script = ExtResource("2_x4ka4")
-target = NodePath("../TargetPoint")
 speed = 100.0
 target_tolerance = 5.0
 recalculation_tolerance = 150.0

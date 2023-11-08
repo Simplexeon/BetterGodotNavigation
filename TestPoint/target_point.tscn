@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxsl22chg0hgm"]
+
+[ext_resource type="Script" path="res://TestPoint/TargetPoint.gd" id="1_u4s5x"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bokux"]
+
+[node name="TargetPoint" type="Sprite2D"]
+position = Vector2(285, 187)
+scale = Vector2(21.9, 21.9)
+texture = SubResource("PlaceholderTexture2D_bokux")
+script = ExtResource("1_u4s5x")
+speed = 400.0

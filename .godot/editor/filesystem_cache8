@@ -1,7 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1699320125
+::res://::1699464273
 icon.svg::CompressedTexture2D::2382552800934743365::1699290856::1699290862::1::::<><>::
-main.tscn::PackedScene::6049633452650543431::1699319273::0::1::::<><>::res://TargetPoint.gd<>res://PathfindingEnemy.gd
-PathfindingEnemy.gd::GDScript::-1::1699303815::0::1::::<>CharacterBody2D<>::
+main.tscn::PackedScene::6049633452650543431::1699464289::0::1::::<><>::uid://cxsl22chg0hgm::::res://TestPoint/target_point.tscn<>res://PathfindingEnemy.gd
+PathfindingEnemy.gd::GDScript::-1::1699379685::0::1::::<>CharacterBody2D<>::
 README.md::TextFile::-1::1699294665::0::1::::<><>::
-TargetPoint.gd::GDScript::-1::1699291415::0::1::::<>Sprite2D<>::
+TargetPoint.gd::GDScript::-1::1699320349::0::1::::<>Sprite2D<>::
+::res://TestPoint/::1699464273
+target_point.tscn::PackedScene::6425061095537005820::1699464281::0::1::::<><>::res://TargetPoint.gd
